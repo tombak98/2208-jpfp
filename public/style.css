@@ -1,0 +1,87 @@
+* {
+    margin:0
+}
+
+body {
+    background-color: #D7CEC7;
+}
+
+#header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+    width: auto;
+    background-color: #76323F;
+    padding: 8px;
+    color: white;
+    font-size: 2rem
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    width: auto;
+    background-color: #76323F;
+    padding: 8px;
+    padding-bottom: 16px;
+    color: white;
+    font-size: 1.5rem
+}
+
+.navlink {
+    padding: 10px 10%;
+    border-color: black;
+    border-style: solid
+}
+
+.selected {
+    background-color: #5f2832;
+    color: white;
+}
+
+/* Students section */
+
+#students-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 90vh;
+    margin: 20px;
+}
+
+.student {
+    width: 30%;
+    height: 80px;
+    background-color: #dbbfa4;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-text{
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-button{
+    background-color: #76323F;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.delete-button:hover{
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.delete-button:active{
+    background-color: #5f2832;
+}
