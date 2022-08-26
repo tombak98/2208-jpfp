@@ -34,12 +34,17 @@ body {
 .navlink {
     padding: 10px 10%;
     border-color: black;
-    border-style: solid
+    border-style: solid;
+    color: white;
 }
 
 .selected {
     background-color: #5f2832;
     color: white;
+}
+
+#main-body {
+    text-align: center;
 }
 
 /* Students section */
@@ -54,7 +59,7 @@ body {
 }
 
 .student {
-    width: 30%;
+    width: 50%;
     height: 80px;
     background-color: #dbbfa4;
     padding: 30px;
@@ -84,4 +89,9 @@ body {
 
 .delete-button:active{
     background-color: #5f2832;
+}
+
+.icons {
+    max-width: 100px;
+    max-height: 100px;
 }

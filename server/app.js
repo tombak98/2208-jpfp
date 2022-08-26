@@ -11,11 +11,11 @@ app.use(cors())
 app.use(volleyball)
 
 //this is where some things should go
-app.get('/', (req, res, next) => {
+app.use('/api', require('./api'))
+
+app.get('*', (req, res, next) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
-
-app.use('/api', require('./api'))
 
 app.use((req, res, next) => {
     const error = Error('page not found');
