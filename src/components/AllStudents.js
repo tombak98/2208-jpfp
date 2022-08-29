@@ -1,5 +1,6 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 
 const AllStudents = (props) => {
 
@@ -13,12 +14,13 @@ const AllStudents = (props) => {
         <div id="students-container">
             {students.map((student)=>
             <div key={student.id} className="student">
-                <img className="icons" src={student.imageUrl}/>
+                <img className="icons" src={`/${student.imageUrl}`}/>
                 <div className="student-text">
                     <h2>{student.firstName + " " + student.lastName}</h2>
-                    <p>Attends {student.campus.name}</p>
                     <br/>
-                    <a>Details for {student.firstName}</a>
+                    {student.campus ? <p>Attends {student.campus.name}</p> : <p>Not Enrolled Yet!</p>}
+                    <br/>
+                    <Link to={`/students/${student.id}`}>Details for {student.firstName}</Link>
                 </div>
                 <div className="delete-text">
                     <button className="delete-button">Delete</button>

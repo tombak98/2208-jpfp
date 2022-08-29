@@ -6,6 +6,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import {getCampuses} from './store/campusReducer'
 import {getStudents} from './store/studentReducer'
 import HomePage from "./components/HomePage";
+import SingleCampus from './components/SingleCampus'
+import SingleStudent from './components/SingleStudent'
 
 
 function App(){
@@ -42,6 +44,8 @@ function App(){
             <Route index path="/" element={<HomePage/>}/>
             <Route path="/students" element={<AllStudents handler={studentPageHandler}/>}/>
             <Route path="/campuses" element={<AllCampuses handler={campusesPageHandler}/>}/>
+            <Route path="/students/:id" element={<SingleStudent handler={studentPageHandler}/>}/>
+            <Route path="/campuses/:id" element={<SingleCampus handler={campusesPageHandler}/>}/>
         </Routes>
         </div>
         </>

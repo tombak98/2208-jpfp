@@ -25,6 +25,12 @@ const syncAndSeed = async () => {
       description: "Nice University in the middle of NYC"
     })
 
+    await Campus.create({
+      name: "Harvard University",
+      address: "Somewhere IDK",
+      description: "A place where very smart people go"
+    })
+
     await Student.create({
       firstName: "Thomas",
       lastName: "Bak",
@@ -47,6 +53,13 @@ const syncAndSeed = async () => {
       email: "george@gmail.com",
       gpa: 3.8,
       campusId: 1
+    })
+
+    await Student.create({
+      firstName: "Lebron",
+      lastName: "James",
+      email: "lebron23@gmail.com",
+      gpa: 3.7
     })
 
     console.log(`Seeding successful!`);

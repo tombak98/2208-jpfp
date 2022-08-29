@@ -60,7 +60,7 @@ body {
 
 .student {
     width: 50%;
-    height: 80px;
+    height: auto;
     background-color: #dbbfa4;
     padding: 30px;
     display: flex;
@@ -72,7 +72,7 @@ body {
     flex-direction: column;
 }
 
-.delete-button{
+.delete-button, .student-text>a{
     background-color: #76323F;
     border: none;
     color: white;
@@ -83,11 +83,11 @@ body {
     font-size: 16px;
 }
 
-.delete-button:hover{
+.delete-button:hover, .student-text>a:hover{
     box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.delete-button:active{
+.delete-button:active, .student-text>a:active{
     background-color: #5f2832;
 }
 
@@ -95,3 +95,34 @@ body {
     max-width: 100px;
     max-height: 100px;
 }
+
+/* Single Views */
+
+#single-campus-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-height: 90vh;
+    margin: 20px;
+}
+
+.single-campus {
+    width: 50%;
+    height: auto;
+    background-color: #dbbfa4;
+    padding: 30px;
+    display: flex;
+    gap: 50px;
+}
+
+.campus-text {
+    text-align: left;
+}
+
+.campus-text a{
+    text-decoration: underline;
+    color: #76323F;
+    font-weight: bold;
+}
+

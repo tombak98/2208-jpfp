@@ -7,8 +7,20 @@ router.get('/', async(req,res,next)=>{
         let campuses = await Campus.findAll({
             include: Student
         })
-        res.send(campuses)
+        res.status(200).send(campuses)
     } catch(err) {
+        next(err)
+    }
+})
+
+// GET single campus
+router.get('/:id', async(req,res,next) => {
+    try {
+        let campus = await Campus.findByPk(req.params.id, {
+            include: Student
+        })
+        res.status(200).send(campus)
+    } catch (err) {
         next(err)
     }
 })
