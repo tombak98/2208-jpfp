@@ -25,4 +25,35 @@ router.get('/:id', async(req,res,next) => {
     }
 })
 
+// POST new student
+router.post('/', async(req,res,next) => {
+    try {
+        if (req.body.campus !== "none") {
+        let campus = await Campus.findOne({
+            where: {
+                name: req.body.campus
+            }
+        })
+        let newStudent = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            gpa: req.body.gpa,
+            campusId: campus.id
+        }
+        res.status(201).send(await Student.create(newStudent))
+        } else {
+        let newStudent = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            gpa: req.body.gpa
+        }
+        res.status(201).send(await Student.create(newStudent))
+        }
+    } catch (err) {
+        next(err)
+    }
+})
+
 module.exports = router

@@ -2,11 +2,15 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import CampusForm from "./CampusForm"
+import {getCampuses} from '../store/campusReducer'
 
 const AllCampuses = (props) => {
 
+    const dispatch = useDispatch()
+
     React.useEffect(()=>{
         props.handler()
+        dispatch(getCampuses())
     },[])
 
     const campuses = useSelector(state => state.campuses.data)

@@ -24,7 +24,7 @@ const SingleStudent = (props) => {
                     <br/>
                     <h2>Email: {student.email}</h2>
                     <br/>
-                    <h2>GPA: {student.gpa}</h2>
+                    <h2>GPA: {student.gpa ? student.gpa:"unavailable"}</h2>
                     <br/>
                     <h2>Attends: {student.campus ? <Link to={`/campuses/${student.campus.id}`}>{student.campus.name}</Link> : "Not enrolled anywhere yet!"}</h2>
                 </div>
