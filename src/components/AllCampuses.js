@@ -1,6 +1,7 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
+import CampusForm from "./CampusForm"
 
 const AllCampuses = (props) => {
 
@@ -11,12 +12,13 @@ const AllCampuses = (props) => {
     const campuses = useSelector(state => state.campuses.data)
 
     return (
+        <>
         <div id="students-container">
            {campuses.map((campus)=>
             <div key={campus.id} className="student">
                 <img className="icons" src={`/${campus.imageUrl}`}/>
                 <div className="student-text">
-                    <h2>{campus.name} ({campus.students.length} enrollments)</h2>
+                    <h2>{campus.name} ({(campus.students ? campus.students.length: 0) } enrollments)</h2>
                     <br/>
                     <Link to={`/campuses/${campus.id}`}>Details for {campus.name}</Link>
                 </div>
@@ -26,6 +28,8 @@ const AllCampuses = (props) => {
              </div>
             )}
         </div>
+        <CampusForm/>
+        </>
     )
 }
 
