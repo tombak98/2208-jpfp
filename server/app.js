@@ -16,9 +16,31 @@ app.use(volleyball)
 
 app.use('/api', require('./api'))
 
-app.get('*', (req, res, next) => {
+
+// routes that need the html. If none of these routes, then give a 404 page.
+// This is a workaround for the express and react interactions
+app.get('/', (req, res, next) => {
     res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
+
+app.get('/campuses/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
+
+app.get('/campuses', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
+app.get('/students/:id', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
+app.get('/students', (req, res, next) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
+// Error middleware
 
 app.use((req, res, next) => {
     const error = Error('page not found');
