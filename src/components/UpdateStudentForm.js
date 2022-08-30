@@ -31,7 +31,7 @@ const UpdateStudentForm = () => {
             email: form.email,
             gpa: form.gpa,
             campus: form.campus,
-            imageUrl: ""
+            imageUrl: form.imageUrl
         }));
         setForm({
             firstName: "",

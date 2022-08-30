@@ -79,6 +79,20 @@ export const removeStudent = (id) => {
     }
 }
 
+export const orderLastName = () => {
+    return async (dispatch) => {
+        const { data } = await axios.get('/api/students/lastname')
+        dispatch(_getStudents(data))
+    }
+}
+
+export const orderGPA = () => {
+    return async (dispatch) => {
+        const { data } = await axios.get('/api/students/gpa')
+        dispatch(_getStudents(data))
+    }
+}
+
 
 // reducer
 export default (state=initState, action) => {

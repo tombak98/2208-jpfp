@@ -2,11 +2,12 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import StudentForm from "./StudentForm"
-import { getStudents } from "../store/studentReducer"
-import { deleteStudent } from "../store/studentReducer"
+import { getStudents, deleteStudent, orderLastName, orderGPA } from "../store/studentReducer"
 import { getCampuses } from "../store/campusReducer"
 
 const AllStudents = (props) => {
+
+    const [show, setShow] = React.useState("All")
 
     const students = useSelector(state => state.students.data)
     const campuses = useSelector(state => state.campuses.data)
@@ -34,10 +35,41 @@ const AllStudents = (props) => {
         dispatch(deleteStudent(studentId))
     }
 
+    function lastNameOrder(event) {
+        event.preventDefault()
+        dispatch(orderLastName())
+    }
+    
+    function gpaOrder(event) {
+        event.preventDefault()
+        dispatch(orderGPA())
+    }
+
     return (
         <>
         <div id="students-container">
-            {students.map((student)=>
+            <div className="sorts">
+                Order By:
+                <button onClick={lastNameOrder}>Last Name</button>
+                <button onClick={gpaOrder}>GPA</button>
+            </div>
+            <div className="sorts">
+                Filter By:
+                <button onClick={()=>setShow("All")}>All</button>
+                <button onClick={()=>setShow("Registered")}>Registered</button>
+                <button onClick={()=>setShow("Unregistered")}>Unregistered</button>
+            </div>
+            {students.filter((student)=>{
+                if (show === "All") {
+                    return true
+                } else if (show === "Registered" && student.campusId) {
+                    return true
+                } else if (show === "Unregistered" && !student.campusId) {
+                    return true
+                } else {
+                    return false
+                }
+            }).map((student)=>
             <div key={student.id} className="student">
                 <img className="icons" src={`${student.imageUrl}`}/>
                 <div className="student-text">

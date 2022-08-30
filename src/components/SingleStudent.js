@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom'
 import {getStudent} from '../store/singleStudentReducer'
 import { Link } from "react-router-dom"
 import UpdateStudentForm from "./UpdateStudentForm"
+import NotFound from "./NotFound"
 
 const SingleStudent = (props) => {
 
@@ -17,6 +18,7 @@ const SingleStudent = (props) => {
         props.handler()
     },[students])
 
+    if (student.firstName) {
     return (
         <>
         <div id="single-campus-container">
@@ -36,6 +38,11 @@ const SingleStudent = (props) => {
         <UpdateStudentForm/>
         </>
     )
+    } else {
+        return (
+            <NotFound/>
+        )
+    }
 }
 
 export default SingleStudent

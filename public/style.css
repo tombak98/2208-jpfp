@@ -182,3 +182,28 @@ form {
     margin: 0.5em 0;
   }
 
+
+  #not-found {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+  .sorts {
+    padding: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .sorts button {
+    color: white;
+    background-color: #76323F;
+    height: auto;
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .sorts button:hover {
+    background-color: #5f2832;
+  }

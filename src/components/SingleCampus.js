@@ -5,6 +5,7 @@ import { getCampus } from "../store/singleCampusReducer"
 import { Link } from "react-router-dom"
 import UpdateCampusForm from "./UpdateCampusForm"
 import { removeStudent } from "../store/studentReducer"
+import NotFound from "./NotFound"
 
 const SingleCampus = (props) => {
 
@@ -24,6 +25,7 @@ const SingleCampus = (props) => {
         dispatch(removeStudent(event.target.value))
     }
 
+    if (campus.name) {
     return (
         <>
         <div id="single-campus-container">
@@ -53,6 +55,11 @@ const SingleCampus = (props) => {
         <UpdateCampusForm/>
         </>
     )
+    } else {
+        return (
+            <NotFound/>
+        )
+    }
 }
 
 export default SingleCampus

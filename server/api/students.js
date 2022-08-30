@@ -13,6 +13,36 @@ router.get('/', async(req,res,next)=>{
     }
 })
 
+// GET students by last name
+router.get('/lastname', async(req,res,next)=>{
+    try{
+        let students = await Student.findAll({
+            include: Campus,
+            order: [
+                ['lastName', 'ASC']
+            ]
+        })
+        res.send(students)
+    } catch (err) {
+        next(err)
+    }
+})
+
+// GET students by GPA
+router.get('/gpa', async(req,res,next)=>{
+    try {
+        let students = await Student.findAll({
+            include: Campus,
+            order: [
+                ['gpa', 'DESC']
+            ]
+        })
+        res.send(students)
+    } catch (err) {
+        next(err)
+    }
+})
+
 // GET single student
 router.get('/:id', async(req,res,next) => {
     try {

@@ -5,7 +5,10 @@ const {db, Campus, Student} = require('../db/index.js')
 router.get('/', async(req,res,next)=>{
     try {
         let campuses = await Campus.findAll({
-            include: Student
+            include: Student,
+            order: [
+                ["name", "ASC"]
+            ]
         })
         res.status(200).send(campuses)
     } catch(err) {
