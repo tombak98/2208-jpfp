@@ -3,19 +3,22 @@ import { useSelector, useDispatch } from "react-redux"
 import {useParams} from 'react-router-dom'
 import {getStudent} from '../store/singleStudentReducer'
 import { Link } from "react-router-dom"
+import UpdateStudentForm from "./UpdateStudentForm"
 
 const SingleStudent = (props) => {
 
     const dispatch = useDispatch()
     const params = useParams()
     const student = useSelector(state => state.singleStudent.data)
+    const students = useSelector(state => state.students.data)
 
     React.useEffect(()=>{
         dispatch(getStudent(params.id))
         props.handler()
-    },[])
+    },[students])
 
     return (
+        <>
         <div id="single-campus-container">
             <div key={student.id} className="single-campus">
                 <img className="icons" src={`/${student.imageUrl}`}/>
@@ -30,6 +33,8 @@ const SingleStudent = (props) => {
                 </div>
              </div>
         </div>
+        <UpdateStudentForm/>
+        </>
     )
 }
 

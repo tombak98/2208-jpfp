@@ -8,6 +8,7 @@ const initState = {
 const GET_STUDENTS = "GET_STUDENTS"
 const ADD_STUDENTS = "ADD_STUDENTS"
 const DELETE_STUDENT = "DELETE_STUDENT"
+const UPDATE_STUDENT = "UPDATE_STUDENT"
 
 // Action creators
 
@@ -33,6 +34,13 @@ const _deleteStudent = (student) => {
     }
 }
 
+const _updateStudent = (student) => {
+    return {
+        type: UPDATE_STUDENT,
+        student
+    }
+}
+
 // thunk creators
 export const getStudents = () => {
     return async (dispatch) => {
@@ -51,8 +59,23 @@ export const addStudent = (student) => {
 export const deleteStudent = (id) => {
     return async (dispatch) => {
         const { data } = await axios.get(`/api/students/${id}`)
-        await axios.delete(`api/students/${id}`)
+        await axios.delete(`/api/students/${id}`)
         dispatch(_deleteStudent(data))
+    }
+}
+
+export const updateStudent = (id, newStudent) => {
+    return async (dispatch) => {
+        await axios.put(`/api/students/${id}`, newStudent)
+        dispatch(_updateStudent(newStudent))
+    }
+}
+
+export const removeStudent = (id) => {
+    return async (dispatch) => {
+        await axios.put(`/api/students/${id}/unassign`)
+        const { data } = await axios.get(`/api/students/${id}`)
+        dispatch(_updateStudent(data))
     }
 }
 
@@ -78,6 +101,17 @@ export default (state=initState, action) => {
             })
             return {
                 data: [...newArray]
+            }
+        case UPDATE_STUDENT:
+            let newArray2 = state.data.map((element) => {
+                if (action.student.id === element.id) {
+                    return action.student
+                } else {
+                    return element
+                }
+            })
+            return {
+                data: [...newArray2]
             }
         default:
             return state

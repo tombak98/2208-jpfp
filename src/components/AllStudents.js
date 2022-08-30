@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import StudentForm from "./StudentForm"
 import { getStudents } from "../store/studentReducer"
 import { deleteStudent } from "../store/studentReducer"
+import { getCampuses } from "../store/campusReducer"
 
 const AllStudents = (props) => {
 
@@ -15,6 +16,7 @@ const AllStudents = (props) => {
     React.useEffect(()=>{
         props.handler()
         dispatch(getStudents())
+        dispatch(getCampuses())
     },[])
 
     function findCampus(id) {

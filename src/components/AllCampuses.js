@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import CampusForm from "./CampusForm"
 import {getCampuses} from '../store/campusReducer'
 import { deleteCampus } from "../store/campusReducer"
+import {getStudents} from "../store/studentReducer"
 
 const AllCampuses = (props) => {
 
@@ -12,6 +13,7 @@ const AllCampuses = (props) => {
     React.useEffect(()=>{
         props.handler()
         dispatch(getCampuses())
+        dispatch(getStudents())
     },[])
 
     const campuses = useSelector(state => state.campuses.data)

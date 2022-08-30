@@ -47,7 +47,8 @@ router.post('/', async(req,res,next) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            gpa: req.body.gpa
+            gpa: req.body.gpa,
+            campusId: null
         }
         res.status(201).send(await Student.create(newStudent))
         }
@@ -63,6 +64,52 @@ router.delete('/:id', async(req,res,next)=>{
         await student.destroy()
         res.status(204).send(student)
     } catch(err) {
+        next(err)
+    }
+})
+
+// PUT unassign a student
+router.put('/:id/unassign', async(req,res,next) => {
+    try {
+    const student = await Student.findByPk(req.params.id)
+    res.status(200).send(await student.update({
+        ...student,
+        campusId: null
+    }))
+    } catch(err) {
+        next(err)
+    }
+})
+
+// PUT update a student
+router.put('/:id', async(req,res,next) => {
+    try {
+        const student = await Student.findByPk(req.params.id)
+        if (req.body.campus !== "none") {
+            let campus = await Campus.findOne({
+                where: {
+                    name: req.body.campus
+                }
+            })
+            let newStudent = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                gpa: req.body.gpa,
+                campusId: campus.id
+            }
+            res.status(200).send(await student.update(newStudent))
+            } else {
+            let newStudent = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                gpa: req.body.gpa,
+                campusId: null
+            }
+            res.status(200).send(await student.update(newStudent))
+            }
+    } catch (err) {
         next(err)
     }
 })

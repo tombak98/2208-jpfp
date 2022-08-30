@@ -8,6 +8,7 @@ const initState = {
 const GET_CAMPUSES = "GET_CAMPUSES"
 const ADD_CAMPUS = "ADD_CAMPUS"
 const DELETE_CAMPUS = "DELETE_CAMPUS"
+const UPDATE_CAMPUS = "UPDATE_CAMPUS"
 
 // Action creators
 
@@ -33,6 +34,13 @@ const _deleteCampus = (campus) => {
     }
 }
 
+const _updateCampus = (campus) => {
+    return {
+        type: UPDATE_CAMPUS,
+        campus
+    }
+}
+
 // thunk creators
 export const getCampuses = () => {
     return async (dispatch) => {
@@ -50,12 +58,21 @@ export const addCampus = (campus) => {
 
 export const deleteCampus = (id) => {
     return async (dispatch) => {
-        const {data} = await axios.get(`api/campuses/${id}`)
-        await axios.delete(`api/campuses/${id}`)
+        const {data} = await axios.get(`/api/campuses/${id}`)
+        await axios.delete(`/api/campuses/${id}`)
         dispatch(_deleteCampus(data))
     }
 }
 
+export const updateCampus = (id, newCampus) => {
+    return async (dispatch) => {
+        await axios.put(`/api/campuses/${id}`, newCampus)
+        dispatch(_updateCampus(newCampus))
+    }
+}
+
+
+// reducer
 export default (state=initState, action) => {
     switch (action.type) {
         case GET_CAMPUSES:
@@ -76,6 +93,17 @@ export default (state=initState, action) => {
             })
             return {
                 data: [...newArray]
+            }
+        case UPDATE_CAMPUS:
+            let newArray2 = state.data.map((element) => {
+                if (action.campus.id === element.id) {
+                    return action.campus
+                } else {
+                    return element
+                }
+            })
+            return {
+                data: [...newArray2]
             }
         default:
             return state
