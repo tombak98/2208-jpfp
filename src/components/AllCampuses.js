@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import CampusForm from "./CampusForm"
 import {getCampuses} from '../store/campusReducer'
+import { deleteCampus } from "../store/campusReducer"
 
 const AllCampuses = (props) => {
 
@@ -14,6 +15,12 @@ const AllCampuses = (props) => {
     },[])
 
     const campuses = useSelector(state => state.campuses.data)
+
+    function deleteHandler(event) {
+        event.preventDefault()
+        let campusId = event.target.value
+        dispatch(deleteCampus(campusId))
+    }
 
     return (
         <>
@@ -27,7 +34,7 @@ const AllCampuses = (props) => {
                     <Link to={`/campuses/${campus.id}`}>Details for {campus.name}</Link>
                 </div>
                 <div className="delete-text">
-                    <button className="delete-button">Delete</button>
+                    <button onClick={deleteHandler} value={campus.id} className="delete-button">Delete</button>
                 </div>
              </div>
             )}

@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {db, Campus, Student} = require('../db/index.js')
 
-// GET all students
+// GET all Campuss
 router.get('/', async(req,res,next)=>{
     try {
         let campuses = await Campus.findAll({
@@ -29,6 +29,18 @@ router.get('/:id', async(req,res,next) => {
 router.post('/', async(req,res,next) => {
     try {
         res.status(201).send(await Campus.create(req.body))
+    } catch (err) {
+        next(err)
+    }
+})
+
+// DELETE a campus
+
+router.delete('/:id', async(req,res,next) => {
+    try {
+        const campus = await Campus.findByPk(req.params.id)
+        await campus.destroy()
+        res.status(204).send(campus)
     } catch (err) {
         next(err)
     }

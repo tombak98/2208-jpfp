@@ -7,6 +7,7 @@ const initState = {
 // Action types
 const GET_CAMPUSES = "GET_CAMPUSES"
 const ADD_CAMPUS = "ADD_CAMPUS"
+const DELETE_CAMPUS = "DELETE_CAMPUS"
 
 // Action creators
 
@@ -25,6 +26,13 @@ const _addCampus = (campus) => {
     }
 }
 
+const _deleteCampus = (campus) => {
+    return {
+        type: DELETE_CAMPUS,
+        campus
+    }
+}
+
 // thunk creators
 export const getCampuses = () => {
     return async (dispatch) => {
@@ -40,6 +48,14 @@ export const addCampus = (campus) => {
       };
 }
 
+export const deleteCampus = (id) => {
+    return async (dispatch) => {
+        const {data} = await axios.get(`api/campuses/${id}`)
+        await axios.delete(`api/campuses/${id}`)
+        dispatch(_deleteCampus(data))
+    }
+}
+
 export default (state=initState, action) => {
     switch (action.type) {
         case GET_CAMPUSES:
@@ -49,6 +65,17 @@ export default (state=initState, action) => {
         case ADD_CAMPUS:
             return {
                 data: [...state.data, action.campus]
+            }
+        case DELETE_CAMPUS:
+            let newArray = state.data.filter((element) => {
+                if (action.campus.id === element.id) {
+                    return false
+                } else {
+                    return true
+                }
+            })
+            return {
+                data: [...newArray]
             }
         default:
             return state
