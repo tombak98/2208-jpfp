@@ -155,12 +155,19 @@ form {
     height: 40px;
     font-size: 1.25rem
   }
+
+  ul button {
+    color: white;
+    background-color: #76323F;
+    height: auto;
+    font-size: 1rem
+  }
   
-  form>button:hover {
+  form>button:hover, ul button:hover {
     background-color: #5f2832;
   }
   
-  form>button:disabled {
+  form>button:disabled, ul button:disabled {
     background-color: #ccc;
   }
   

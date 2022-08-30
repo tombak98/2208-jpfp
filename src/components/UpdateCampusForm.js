@@ -12,6 +12,7 @@ const UpdateCampusForm = () => {
         name: "",
         address: "",
         description: "",
+        imageUrl: ""
       })
       
     const dispatch = useDispatch();
@@ -22,12 +23,14 @@ const UpdateCampusForm = () => {
         dispatch(updateCampus(params.id,{
             name: form.name,
             address: form.address,
-            description: form.description
+            description: form.description,
+            imageUrl: form.imageUrl
         }));
         setForm({
             name: "",
             address: "",
-            description: ""
+            description: "",
+            imageUrl: ""
         })
       }
     
@@ -50,7 +53,8 @@ const UpdateCampusForm = () => {
         setForm({
             name: campus.name,
             address: campus.address,
-            description: campus.description
+            description: campus.description,
+            imageUrl: campus.imageUrl
         })
     },[campus])
 
@@ -68,7 +72,11 @@ const UpdateCampusForm = () => {
             <label htmlFor='description'>Description:</label>
             <input name='description' value={form.description || ""} onChange={handleChange("description")}/>
 
+            <label htmlFor='imageUrl'>Image Url:</label>
+            <input name='imageUrl' value={form.imageUrl || ""} onChange={handleChange("imageUrl")}/>
+
             <button type='submit' disabled={isFormEmpty() ? true:false}>Submit</button>
+            {isFormEmpty() ? <div>Please input name and address</div> : ""}
         </form>
     )
 }

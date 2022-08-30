@@ -13,6 +13,7 @@ const StudentForm = () => {
         lastName: "",
         email: "",
         gpa: null,
+        imageUrl: "prof_pic.webp",
         campus: "none"
       })
       
@@ -25,6 +26,7 @@ const StudentForm = () => {
             lastName: form.lastName,
             email: form.email,
             gpa: form.gpa,
+            imageUrl: form.imageUrl,
             campus: form.campus
         }));
         setForm({
@@ -32,6 +34,7 @@ const StudentForm = () => {
             lastName: "",
             email: "",
             gpa: null,
+            imageUrl: "prof_pic.webp",
             campus: "none"
         })
       }
@@ -68,6 +71,9 @@ const StudentForm = () => {
             <label htmlFor='gpa'>GPA:</label>
             <input name='gpa' value={form.gpa || ""} onChange={handleChange("gpa")}/>
 
+            <label htmlFor='imageUrl'>Image Url:</label>
+            <input name='imageUrl' value={form.imageUrl || ""} onChange={handleChange("imageUrl")}/>
+
             <label htmlFor='campus'>Campus</label>
             <select onChange={handleChange('campus')}>
                 <option value="none">None</option>
@@ -77,6 +83,7 @@ const StudentForm = () => {
             </select>
 
             <button type='submit' disabled={isFormEmpty() ? true:false}>Submit</button>
+            {isFormEmpty() ? <div>Please input name and email</div> : ""}
         </form>
     )
 }

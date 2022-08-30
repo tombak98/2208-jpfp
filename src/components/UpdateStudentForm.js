@@ -16,7 +16,8 @@ const UpdateStudentForm = () => {
         lastName: "",
         email: "",
         gpa: null,
-        campus: "none"
+        campus: "none",
+        imageUrl: "prof_pic.webp"
       })
     
     const params = useParams()
@@ -29,14 +30,16 @@ const UpdateStudentForm = () => {
             lastName: form.lastName,
             email: form.email,
             gpa: form.gpa,
-            campus: form.campus
+            campus: form.campus,
+            imageUrl: ""
         }));
         setForm({
             firstName: "",
             lastName: "",
             email: "",
             gpa: null,
-            campus: "none"
+            campus: "none",
+            imageUrl: "prof_pic.webp"
         })
       }
     
@@ -61,7 +64,8 @@ const UpdateStudentForm = () => {
             lastName: student.lastName,
             email: student.email,
             gpa: student.gpa,
-            campus: "none"
+            campus: "none",
+            imageUrl: student.imageUrl
         })
     },[student])
 
@@ -82,6 +86,9 @@ const UpdateStudentForm = () => {
             <label htmlFor='gpa'>GPA:</label>
             <input name='gpa' value={form.gpa || ""} onChange={handleChange("gpa")}/>
 
+            <label htmlFor='imageUrl'>Image Url:</label>
+            <input name='imageUrl' value={form.imageUrl || ""} onChange={handleChange("imageUrl")}/>
+
             <label htmlFor='campus'>Campus</label>
             <select onChange={handleChange('campus')}>
                 <option value="none">None</option>
@@ -91,6 +98,7 @@ const UpdateStudentForm = () => {
             </select>
 
             <button type='submit' disabled={isFormEmpty() ? true:false}>Submit</button>
+            {isFormEmpty() ? <div>Please input name and email</div> : ""}
         </form>
     )
 }

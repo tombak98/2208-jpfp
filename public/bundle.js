@@ -2772,7 +2772,8 @@ var CampusForm = function CampusForm() {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState({
     name: "",
     address: "",
-    description: ""
+    description: "",
+    imageUrl: "default_campus.jpeg"
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       form = _React$useState2[0],
@@ -2785,12 +2786,14 @@ var CampusForm = function CampusForm() {
     dispatch((0,_store_campusReducer__WEBPACK_IMPORTED_MODULE_2__.addCampus)({
       name: form.name,
       address: form.address,
-      description: form.description
+      description: form.description,
+      imageUrl: form.imageUrl
     }));
     setForm({
       name: "",
       address: "",
-      description: ""
+      description: "",
+      imageUrl: "default_campus.jpeg"
     });
   };
 
@@ -2829,10 +2832,16 @@ var CampusForm = function CampusForm() {
     name: "description",
     value: form.description || "",
     onChange: handleChange("description")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "imageUrl"
+  }, "Image Url:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "imageUrl",
+    value: form.imageUrl || "",
+    onChange: handleChange("imageUrl")
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
     disabled: isFormEmpty() ? true : false
-  }, "Submit"));
+  }, "Submit"), isFormEmpty() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Please input name and address") : "");
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CampusForm);
@@ -3048,6 +3057,7 @@ var StudentForm = function StudentForm() {
     lastName: "",
     email: "",
     gpa: null,
+    imageUrl: "prof_pic.webp",
     campus: "none"
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -3063,6 +3073,7 @@ var StudentForm = function StudentForm() {
       lastName: form.lastName,
       email: form.email,
       gpa: form.gpa,
+      imageUrl: form.imageUrl,
       campus: form.campus
     }));
     setForm({
@@ -3070,6 +3081,7 @@ var StudentForm = function StudentForm() {
       lastName: "",
       email: "",
       gpa: null,
+      imageUrl: "prof_pic.webp",
       campus: "none"
     });
   };
@@ -3116,6 +3128,12 @@ var StudentForm = function StudentForm() {
     value: form.gpa || "",
     onChange: handleChange("gpa")
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "imageUrl"
+  }, "Image Url:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "imageUrl",
+    value: form.imageUrl || "",
+    onChange: handleChange("imageUrl")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "campus"
   }, "Campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     onChange: handleChange('campus')
@@ -3129,7 +3147,7 @@ var StudentForm = function StudentForm() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
     disabled: isFormEmpty() ? true : false
-  }, "Submit"));
+  }, "Submit"), isFormEmpty() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Please input name and email") : "");
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (StudentForm);
@@ -3185,7 +3203,8 @@ var UpdateCampusForm = function UpdateCampusForm() {
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState({
     name: "",
     address: "",
-    description: ""
+    description: "",
+    imageUrl: ""
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       form = _React$useState2[0],
@@ -3199,12 +3218,14 @@ var UpdateCampusForm = function UpdateCampusForm() {
     dispatch((0,_store_campusReducer__WEBPACK_IMPORTED_MODULE_2__.updateCampus)(params.id, {
       name: form.name,
       address: form.address,
-      description: form.description
+      description: form.description,
+      imageUrl: form.imageUrl
     }));
     setForm({
       name: "",
       address: "",
-      description: ""
+      description: "",
+      imageUrl: ""
     });
   };
 
@@ -3226,7 +3247,8 @@ var UpdateCampusForm = function UpdateCampusForm() {
     setForm({
       name: campus.name,
       address: campus.address,
-      description: campus.description
+      description: campus.description,
+      imageUrl: campus.imageUrl
     });
   }, [campus]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -3250,10 +3272,16 @@ var UpdateCampusForm = function UpdateCampusForm() {
     name: "description",
     value: form.description || "",
     onChange: handleChange("description")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "imageUrl"
+  }, "Image Url:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "imageUrl",
+    value: form.imageUrl || "",
+    onChange: handleChange("imageUrl")
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
     disabled: isFormEmpty() ? true : false
-  }, "Submit"));
+  }, "Submit"), isFormEmpty() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Please input name and address") : "");
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateCampusForm);
@@ -3315,7 +3343,8 @@ var UpdateStudentForm = function UpdateStudentForm() {
     lastName: "",
     email: "",
     gpa: null,
-    campus: "none"
+    campus: "none",
+    imageUrl: "prof_pic.webp"
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       form = _React$useState2[0],
@@ -3331,14 +3360,16 @@ var UpdateStudentForm = function UpdateStudentForm() {
       lastName: form.lastName,
       email: form.email,
       gpa: form.gpa,
-      campus: form.campus
+      campus: form.campus,
+      imageUrl: ""
     }));
     setForm({
       firstName: "",
       lastName: "",
       email: "",
       gpa: null,
-      campus: "none"
+      campus: "none",
+      imageUrl: "prof_pic.webp"
     });
   };
 
@@ -3362,7 +3393,8 @@ var UpdateStudentForm = function UpdateStudentForm() {
       lastName: student.lastName,
       email: student.email,
       gpa: student.gpa,
-      campus: "none"
+      campus: "none",
+      imageUrl: student.imageUrl
     });
   }, [student]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -3393,6 +3425,12 @@ var UpdateStudentForm = function UpdateStudentForm() {
     value: form.gpa || "",
     onChange: handleChange("gpa")
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "imageUrl"
+  }, "Image Url:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    name: "imageUrl",
+    value: form.imageUrl || "",
+    onChange: handleChange("imageUrl")
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "campus"
   }, "Campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     onChange: handleChange('campus')
@@ -3406,7 +3444,7 @@ var UpdateStudentForm = function UpdateStudentForm() {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "submit",
     disabled: isFormEmpty() ? true : false
-  }, "Submit"));
+  }, "Submit"), isFormEmpty() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Please input name and email") : "");
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UpdateStudentForm);

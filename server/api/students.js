@@ -39,7 +39,8 @@ router.post('/', async(req,res,next) => {
             lastName: req.body.lastName,
             email: req.body.email,
             gpa: req.body.gpa,
-            campusId: campus.id
+            campusId: campus.id,
+            imageUrl: req.body.imageUrl
         }
         res.status(201).send(await Student.create(newStudent))
         } else {
@@ -48,7 +49,8 @@ router.post('/', async(req,res,next) => {
             lastName: req.body.lastName,
             email: req.body.email,
             gpa: req.body.gpa,
-            campusId: null
+            campusId: null,
+            imageUrl: req.body.imageUrl
         }
         res.status(201).send(await Student.create(newStudent))
         }
@@ -96,7 +98,8 @@ router.put('/:id', async(req,res,next) => {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 gpa: req.body.gpa,
-                campusId: campus.id
+                campusId: campus.id,
+                imageUrl: req.body.imageUrl
             }
             res.status(200).send(await student.update(newStudent))
             } else {
@@ -105,7 +108,8 @@ router.put('/:id', async(req,res,next) => {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 gpa: req.body.gpa,
-                campusId: null
+                campusId: null,
+                imageUrl: req.body.imageUrl
             }
             res.status(200).send(await student.update(newStudent))
             }

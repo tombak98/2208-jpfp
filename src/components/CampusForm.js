@@ -9,6 +9,7 @@ const CampusForm = () => {
         name: "",
         address: "",
         description: "",
+        imageUrl: "default_campus.jpeg"
       })
       
     const dispatch = useDispatch();
@@ -18,12 +19,14 @@ const CampusForm = () => {
         dispatch(addCampus({
             name: form.name,
             address: form.address,
-            description: form.description
+            description: form.description,
+            imageUrl: form.imageUrl
         }));
         setForm({
             name: "",
             address: "",
-            description: ""
+            description: "",
+            imageUrl: "default_campus.jpeg"
         })
       }
     
@@ -56,7 +59,11 @@ const CampusForm = () => {
             <label htmlFor='description'>Description:</label>
             <input name='description' value={form.description || ""} onChange={handleChange("description")}/>
 
+            <label htmlFor='imageUrl'>Image Url:</label>
+            <input name='imageUrl' value={form.imageUrl || ""} onChange={handleChange("imageUrl")}/>
+
             <button type='submit' disabled={isFormEmpty() ? true:false}>Submit</button>
+            {isFormEmpty() ? <div>Please input name and address</div> : ""}
         </form>
     )
 }
