@@ -21,7 +21,7 @@ const SingleStudent = (props) => {
         <>
         <div id="single-campus-container">
             <div key={student.id} className="single-campus">
-                <img className="icons" src={`/${student.imageUrl}`}/>
+                <img className="icons" src={`${student.imageUrl}`}/>
                 <div className="campus-text">
                     <h1>{student.firstName + " " + student.lastName + "'s"} Details</h1>
                     <br/>

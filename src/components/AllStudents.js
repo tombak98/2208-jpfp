@@ -39,7 +39,7 @@ const AllStudents = (props) => {
         <div id="students-container">
             {students.map((student)=>
             <div key={student.id} className="student">
-                <img className="icons" src={`/${student.imageUrl}`}/>
+                <img className="icons" src={`${student.imageUrl}`}/>
                 <div className="student-text">
                     <h2>{student.firstName + " " + student.lastName}</h2>
                     <br/>

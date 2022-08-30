@@ -17,7 +17,7 @@ const UpdateStudentForm = () => {
         email: "",
         gpa: null,
         campus: "none",
-        imageUrl: "prof_pic.webp"
+        imageUrl: "/prof_pic.webp"
       })
     
     const params = useParams()
@@ -39,7 +39,7 @@ const UpdateStudentForm = () => {
             email: "",
             gpa: null,
             campus: "none",
-            imageUrl: "prof_pic.webp"
+            imageUrl: "/prof_pic.webp"
         })
       }
     

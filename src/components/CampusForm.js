@@ -9,7 +9,7 @@ const CampusForm = () => {
         name: "",
         address: "",
         description: "",
-        imageUrl: "default_campus.jpeg"
+        imageUrl: "/default_campus.jpeg"
       })
       
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const CampusForm = () => {
             name: "",
             address: "",
             description: "",
-            imageUrl: "default_campus.jpeg"
+            imageUrl: "/default_campus.jpeg"
         })
       }
     

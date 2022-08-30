@@ -2628,7 +2628,7 @@ var AllCampuses = function AllCampuses(props) {
       className: "student"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       className: "icons",
-      src: "/".concat(campus.imageUrl)
+      src: "".concat(campus.imageUrl)
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "student-text"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, campus.name, " (", campus.students ? campus.students.length : 0, " enrollments)"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
@@ -2711,7 +2711,7 @@ var AllStudents = function AllStudents(props) {
       className: "student"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       className: "icons",
-      src: "/".concat(student.imageUrl)
+      src: "".concat(student.imageUrl)
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "student-text"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, student.firstName + " " + student.lastName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), student.campusId ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Attends ", findCampus(student.campusId)) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Not Enrolled Yet!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
@@ -2773,7 +2773,7 @@ var CampusForm = function CampusForm() {
     name: "",
     address: "",
     description: "",
-    imageUrl: "default_campus.jpeg"
+    imageUrl: "/default_campus.jpeg"
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       form = _React$useState2[0],
@@ -2793,7 +2793,7 @@ var CampusForm = function CampusForm() {
       name: "",
       address: "",
       description: "",
-      imageUrl: "default_campus.jpeg"
+      imageUrl: "/default_campus.jpeg"
     });
   };
 
@@ -2929,7 +2929,7 @@ var SingleCampus = function SingleCampus(props) {
     className: "single-campus"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "icons",
-    src: "/".concat(campus.imageUrl)
+    src: "".concat(campus.imageUrl)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "campus-text"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, campus.name, " Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "(", campus.students.length, ") enrollments"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Address: ", campus.address), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Description: ", campus.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h3", null, "Enrollees:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, campus.students.length > 0 ? campus.students.map(function (student) {
@@ -2996,7 +2996,7 @@ var SingleStudent = function SingleStudent(props) {
     className: "single-campus"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     className: "icons",
-    src: "/".concat(student.imageUrl)
+    src: "".concat(student.imageUrl)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "campus-text"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, student.firstName + " " + student.lastName + "'s", " Details"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Email: ", student.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "GPA: ", student.gpa ? student.gpa : "unavailable"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Attends: ", student.campus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
@@ -3057,7 +3057,7 @@ var StudentForm = function StudentForm() {
     lastName: "",
     email: "",
     gpa: null,
-    imageUrl: "prof_pic.webp",
+    imageUrl: "/prof_pic.webp",
     campus: "none"
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -3081,7 +3081,7 @@ var StudentForm = function StudentForm() {
       lastName: "",
       email: "",
       gpa: null,
-      imageUrl: "prof_pic.webp",
+      imageUrl: "/prof_pic.webp",
       campus: "none"
     });
   };
@@ -3204,7 +3204,7 @@ var UpdateCampusForm = function UpdateCampusForm() {
     name: "",
     address: "",
     description: "",
-    imageUrl: ""
+    imageUrl: "/default_campus.jpeg"
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       form = _React$useState2[0],
@@ -3225,7 +3225,7 @@ var UpdateCampusForm = function UpdateCampusForm() {
       name: "",
       address: "",
       description: "",
-      imageUrl: ""
+      imageUrl: "/default_campus.jpeg"
     });
   };
 
@@ -3344,7 +3344,7 @@ var UpdateStudentForm = function UpdateStudentForm() {
     email: "",
     gpa: null,
     campus: "none",
-    imageUrl: "prof_pic.webp"
+    imageUrl: "/prof_pic.webp"
   }),
       _React$useState2 = _slicedToArray(_React$useState, 2),
       form = _React$useState2[0],
@@ -3369,7 +3369,7 @@ var UpdateStudentForm = function UpdateStudentForm() {
       email: "",
       gpa: null,
       campus: "none",
-      imageUrl: "prof_pic.webp"
+      imageUrl: "/prof_pic.webp"
     });
   };
 

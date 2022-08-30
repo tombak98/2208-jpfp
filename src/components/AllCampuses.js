@@ -29,7 +29,7 @@ const AllCampuses = (props) => {
         <div id="students-container">
            {campuses.map((campus)=>
             <div key={campus.id} className="student">
-                <img className="icons" src={`/${campus.imageUrl}`}/>
+                <img className="icons" src={`${campus.imageUrl}`}/>
                 <div className="student-text">
                     <h2>{campus.name} ({(campus.students ? campus.students.length: 0) } enrollments)</h2>
                     <br/>

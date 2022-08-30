@@ -13,7 +13,7 @@ const StudentForm = () => {
         lastName: "",
         email: "",
         gpa: null,
-        imageUrl: "prof_pic.webp",
+        imageUrl: "/prof_pic.webp",
         campus: "none"
       })
       
@@ -34,7 +34,7 @@ const StudentForm = () => {
             lastName: "",
             email: "",
             gpa: null,
-            imageUrl: "prof_pic.webp",
+            imageUrl: "/prof_pic.webp",
             campus: "none"
         })
       }
