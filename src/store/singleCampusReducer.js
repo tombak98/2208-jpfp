@@ -3,7 +3,7 @@ import axios from "axios"
 const initState = {
     data: {
         id: 0,
-        imageUrl: "default_campus.jpeg",
+        imageUrl: "/default_campus.jpeg",
         name: "School",
         students: [],
     }
@@ -25,8 +25,14 @@ const _getCampus = (campus) => {
 // thunk creators
 export const getCampus = (id) => {
     return async (dispatch) => {
-      const { data } = await axios.get(`/api/campuses/${id}`);
-      dispatch(_getCampus(data));
+      dispatch(_getCampus({
+        name: "Now Loading",
+        imageUrl: "/default_campus.jpeg",
+        students: [],
+        id: 0
+    }))
+      const { data } = await axios.get(`/api/campuses/${id}`)
+      dispatch(_getCampus(data))
     };
   };
 

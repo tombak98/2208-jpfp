@@ -1,7 +1,16 @@
 import axios from "axios"
 
 const initState = {
-    data: []
+    data: [{
+        firstName: "Now Loading",
+        lastName: "Now Loading",
+        email: "placeholder@gmail.com",
+        imageUrl: "prof_pic.webp",
+        gpa: 4.0,
+        campus: {
+            name: "Now Loading"
+        }
+    }]
 }
 
 // Action types
@@ -44,7 +53,8 @@ const _updateStudent = (student) => {
 // thunk creators
 export const getStudents = () => {
     return async (dispatch) => {
-      const { data } = await axios.get('/api/students');
+        dispatch(_getStudents(initState.data))
+        const { data } = await axios.get('/api/students');
       dispatch(_getStudents(data));
     };
   };

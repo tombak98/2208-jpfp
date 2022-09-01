@@ -2,13 +2,13 @@ import axios from "axios"
 
 const initState = {
     data: {
-        firstName: "Placeholder",
-        lastName: "Placeholder",
-        email: "Placeholder",
+        firstName: "Now Loading",
+        lastName: "Now Loading",
+        email: "Now Loading",
         imageUrl: "prof_pic.webp",
         gpa: 4.0,
         campus: {
-            name: "Placeholder"
+            name: "Now Loading"
         }
     }
 }
@@ -29,6 +29,7 @@ const _getStudent = (student) => {
 // thunk creators
 export const getStudent = (id) => {
     return async (dispatch) => {
+      dispatch(_getStudent(initState.data))
       const { data } = await axios.get(`/api/students/${id}`);
       dispatch(_getStudent(data));
     };

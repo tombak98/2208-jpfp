@@ -44,6 +44,12 @@ const _updateCampus = (campus) => {
 // thunk creators
 export const getCampuses = () => {
     return async (dispatch) => {
+        dispatch(_getCampuses([{
+            name: "Now Loading",
+            imageUrl: "/default_campus.jpeg",
+            students: [],
+            id: 0
+        }]))
       const { data } = await axios.get('/api/campuses');
       dispatch(_getCampuses(data));
     };

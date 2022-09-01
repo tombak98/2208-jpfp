@@ -3631,15 +3631,21 @@ var getCampuses = function getCampuses() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              dispatch(_getCampuses([{
+                name: "Now Loading",
+                imageUrl: "/default_campus.jpeg",
+                students: [],
+                id: 0
+              }]));
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/campuses');
 
-            case 2:
+            case 3:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
               dispatch(_getCampuses(data));
 
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -3854,7 +3860,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var initState = {
   data: {
     id: 0,
-    imageUrl: "default_campus.jpeg",
+    imageUrl: "/default_campus.jpeg",
     name: "School",
     students: []
   }
@@ -3880,15 +3886,21 @@ var getCampus = function getCampus(id) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              dispatch(_getCampus({
+                name: "Now Loading",
+                imageUrl: "/default_campus.jpeg",
+                students: [],
+                id: 0
+              }));
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/campuses/".concat(id));
 
-            case 2:
+            case 3:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
               dispatch(_getCampus(data));
 
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -3943,13 +3955,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var initState = {
   data: {
-    firstName: "Placeholder",
-    lastName: "Placeholder",
-    email: "Placeholder",
+    firstName: "Now Loading",
+    lastName: "Now Loading",
+    email: "Now Loading",
     imageUrl: "prof_pic.webp",
     gpa: 4.0,
     campus: {
-      name: "Placeholder"
+      name: "Now Loading"
     }
   }
 }; // Action types
@@ -3974,15 +3986,16 @@ var getStudent = function getStudent(id) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              dispatch(_getStudent(initState.data));
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/students/".concat(id));
 
-            case 2:
+            case 3:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
               dispatch(_getStudent(data));
 
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -4054,7 +4067,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 var initState = {
-  data: []
+  data: [{
+    firstName: "Now Loading",
+    lastName: "Now Loading",
+    email: "placeholder@gmail.com",
+    imageUrl: "prof_pic.webp",
+    gpa: 4.0,
+    campus: {
+      name: "Now Loading"
+    }
+  }]
 }; // Action types
 
 var GET_STUDENTS = "GET_STUDENTS";
@@ -4101,15 +4123,16 @@ var getStudents = function getStudents() {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              dispatch(_getStudents(initState.data));
+              _context.next = 3;
               return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/students');
 
-            case 2:
+            case 3:
               _yield$axios$get = _context.sent;
               data = _yield$axios$get.data;
               dispatch(_getStudents(data));
 
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
