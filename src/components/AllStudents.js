@@ -50,8 +50,8 @@ const AllStudents = (props) => {
         <div id="students-container">
             <div className="sorts">
                 Order By:
-                <button onClick={lastNameOrder}>Last Name</button>
-                <button onClick={gpaOrder}>GPA</button>
+                <button onClick={lastNameOrder}>Last Name (alphabetically)</button>
+                <button onClick={gpaOrder}>GPA (highest first)</button>
             </div>
             <div className="sorts">
                 Filter By:

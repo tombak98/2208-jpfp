@@ -16,6 +16,24 @@ router.get('/', async(req,res,next)=>{
     }
 })
 
+// GET campuses ordered by number of enrolled students
+router.get('/sorted', async(req,res,next)=>{
+    try {
+        let campuses = await Campus.findAll({
+            include: Student,
+            order: [
+                ["name", "ASC"]
+            ]
+        })
+        let sorted = campuses.sort(function(a,b) {
+            return b.students.length - a.students.length
+        })
+        res.status(200).send(sorted)
+    } catch(err) {
+        next(err)
+    }
+})
+
 // GET single campus
 router.get('/:id', async(req,res,next) => {
     try {

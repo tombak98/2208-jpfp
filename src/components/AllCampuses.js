@@ -2,11 +2,12 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import CampusForm from "./CampusForm"
-import {getCampuses} from '../store/campusReducer'
-import { deleteCampus } from "../store/campusReducer"
+import {getCampuses, deleteCampus, numStudentsCampus} from '../store/campusReducer'
 import {getStudents} from "../store/studentReducer"
 
 const AllCampuses = (props) => {
+
+    const [show, setShow] = React.useState("All")
 
     const dispatch = useDispatch()
 
@@ -24,10 +25,41 @@ const AllCampuses = (props) => {
         dispatch(deleteCampus(campusId))
     }
 
+    function alphaOrder(event) {
+        event.preventDefault()
+        dispatch(getCampuses())
+    }
+
+    function numberEnrolled(event) {
+        event.preventDefault()
+        dispatch(numStudentsCampus())
+    }
+
     return (
         <>
         <div id="students-container">
-           {campuses.map((campus)=>
+        <div className="sorts">
+                Order By:
+                <button onClick={alphaOrder}>Alphabetically</button>
+                <button onClick={numberEnrolled}>Number of Enrolled Students</button>
+            </div>
+            <div className="sorts">
+                Filter By:
+                <button onClick={()=>setShow("All")}>All</button>
+                <button onClick={()=>setShow("Registered")}>Has Registered Students</button>
+                <button onClick={()=>setShow("Unregistered")}>No Registered Students</button>
+            </div>
+           {campuses.filter(function(campus) {
+            if (show === "All") {
+                return true
+            } else if (show === "Registered" && campus.students.length > 0) {
+                return true
+            } else if (show === "Unregistered" && campus.students.length === 0) {
+                return true
+            } else {
+                return false
+            }
+           }).map((campus)=>
             <div key={campus.id} className="student">
                 <img className="icons" src={`${campus.imageUrl}`}/>
                 <div className="student-text">

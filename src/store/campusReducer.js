@@ -77,6 +77,19 @@ export const updateCampus = (id, newCampus) => {
     }
 }
 
+export const numStudentsCampus = () => {
+    return async (dispatch) => {
+        dispatch(_getCampuses([{
+            name: "Now Loading",
+            imageUrl: "/default_campus.jpeg",
+            students: [],
+            id: 0
+        }]))
+      const { data } = await axios.get('/api/campuses/sorted');
+      dispatch(_getCampuses(data));
+    };
+}
+
 
 // reducer
 export default (state=initState, action) => {
