@@ -20,7 +20,7 @@ const CampusForm = () => {
             name: form.name,
             address: form.address,
             description: form.description,
-            imageUrl: form.imageUrl
+            imageUrl: form.imageUrl || "/default_campus.jpeg"
         }));
         setForm({
             name: "",

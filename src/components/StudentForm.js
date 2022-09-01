@@ -26,7 +26,7 @@ const StudentForm = () => {
             lastName: form.lastName,
             email: form.email,
             gpa: form.gpa,
-            imageUrl: form.imageUrl,
+            imageUrl: form.imageUrl || "/prof_pic.webp",
             campus: form.campus
         }));
         setForm({

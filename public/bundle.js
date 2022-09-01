@@ -2899,7 +2899,7 @@ var CampusForm = function CampusForm() {
       name: form.name,
       address: form.address,
       description: form.description,
-      imageUrl: form.imageUrl
+      imageUrl: form.imageUrl || "/default_campus.jpeg"
     }));
     setForm({
       name: "",
@@ -3223,7 +3223,7 @@ var StudentForm = function StudentForm() {
       lastName: form.lastName,
       email: form.email,
       gpa: form.gpa,
-      imageUrl: form.imageUrl,
+      imageUrl: form.imageUrl || "/prof_pic.webp",
       campus: form.campus
     }));
     setForm({
@@ -3369,7 +3369,7 @@ var UpdateCampusForm = function UpdateCampusForm() {
       name: form.name,
       address: form.address,
       description: form.description,
-      imageUrl: form.imageUrl
+      imageUrl: form.imageUrl || "/default_campus.jpeg"
     }));
     setForm({
       name: "",
@@ -3511,7 +3511,7 @@ var UpdateStudentForm = function UpdateStudentForm() {
       email: form.email,
       gpa: form.gpa,
       campus: form.campus,
-      imageUrl: form.imageUrl
+      imageUrl: form.imageUrl || "/prof_pic.webp"
     }));
     setForm({
       firstName: "",
