@@ -207,3 +207,28 @@ form {
   .sorts button:hover {
     background-color: #5f2832;
   }
+
+  .pagination {
+    display: flex;
+    gap: 30px;
+    color: white;
+    list-style: none;
+  }
+
+  .pagination li {
+    color: white;
+    background-color: #5f2832;
+    height: 30px;
+    width: 30px;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pagination li a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+  }

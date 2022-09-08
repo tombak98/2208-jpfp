@@ -4,10 +4,13 @@ import { Link } from "react-router-dom"
 import StudentForm from "./StudentForm"
 import { getStudents, deleteStudent, orderLastName, orderGPA } from "../store/studentReducer"
 import { getCampuses } from "../store/campusReducer"
+import Pagination from "./Pagination"
 
 const AllStudents = (props) => {
 
     const [show, setShow] = React.useState("All")
+    const [currentPage, setCurrentPage] = React.useState(1);
+    const [studentsPerPage] = React.useState(2);
 
     const students = useSelector(state => state.students.data)
     const campuses = useSelector(state => state.campuses.data)
@@ -45,6 +48,25 @@ const AllStudents = (props) => {
         dispatch(orderGPA())
     }
 
+    // Get current posts
+    const studentsFiltered = students.filter((student)=>{
+        if (show === "All") {
+            return true
+        } else if (show === "Registered" && student.campusId) {
+            return true
+        } else if (show === "Unregistered" && !student.campusId) {
+            return true
+        } else {
+            return false
+        }
+    })
+    const indexOfLastPost = currentPage * studentsPerPage;
+    const indexOfFirstPost = indexOfLastPost - studentsPerPage;
+    const currentPosts = studentsFiltered.slice(indexOfFirstPost, indexOfLastPost);
+
+    // Change page
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+
     return (
         <>
         <div id="students-container">
@@ -59,17 +81,7 @@ const AllStudents = (props) => {
                 <button onClick={()=>setShow("Registered")}>Registered</button>
                 <button onClick={()=>setShow("Unregistered")}>Unregistered</button>
             </div>
-            {students.filter((student)=>{
-                if (show === "All") {
-                    return true
-                } else if (show === "Registered" && student.campusId) {
-                    return true
-                } else if (show === "Unregistered" && !student.campusId) {
-                    return true
-                } else {
-                    return false
-                }
-            }).map((student)=>
+            {currentPosts.map((student)=>
             <div key={student.id} className="student">
                 <img className="icons" src={`${student.imageUrl}`}/>
                 <div className="student-text">
@@ -84,6 +96,7 @@ const AllStudents = (props) => {
                 </div>
              </div>
             )}
+            <Pagination postsPerPage={studentsPerPage} totalPosts={studentsFiltered.length} paginate={paginate}/>
         </div>
         <StudentForm/>
         </>
